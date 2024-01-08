@@ -1,11 +1,15 @@
 import React from "react";
 
-const Player = ({ name, symbol, isActive }) => {
+const Player = ({ name, symbol, isActive, onChangeName }) => {
   const [playerName, setPlayerName] = React.useState(name);
   const [isEditing, setIsEditing] = React.useState(false);
 
   const handleEditing = () => {
     setIsEditing((prev) => !prev);
+
+    if (isEditing) {
+      onChangeName(symbol, playerName);
+    }
   };
 
   const handleSubmit = (e) => {
